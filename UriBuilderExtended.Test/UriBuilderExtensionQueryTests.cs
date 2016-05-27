@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using UriBuilderExtended;
 
 namespace UriBuilderExtended.Test
@@ -33,6 +34,7 @@ namespace UriBuilderExtended.Test
 
             Assert.IsFalse(uriBuilder.HasQuery("nokey"), "Wrongfully detected non-existing key");
         }
+
         [TestMethod]
         public void HasQueryMultiValue()
         {
@@ -138,8 +140,69 @@ namespace UriBuilderExtended.Test
         [TestMethod]
         public void SpecialCharacterStrings()
         {
-            // TODO: Test special characters
-            Assert.Fail("Test not written.");
+            // TODO: Improve
+
+            string urlString = "http://www.test.com/";
+
+            // TODO: utf8Charmap does not cover everything
+            Dictionary<string, string> utf8Charmap = new Dictionary<string, string>
+            {
+                {" ", "+"},
+                //{"!", "%21"},
+                //{"\"", "%22"},
+                {"#", "%23"},
+                {"$", "%24"},
+                {"%", "%25"},
+                {"&", "%26"},
+                //{"'", "%27"},
+                //{"(", "%28"},
+                //{")", "%29"},
+                //{"*", "%2A"},
+                {"+", "%2B"},
+                {",", "%2C"},
+                //{"-", "%2D"},
+                //{".", "%2E"},
+                {"/", "%2F"},
+                //{":", "%3A"},
+                {";", "%3B"},
+                //{"<", "%3C"},
+                {"=", "%3D"},
+                //{">", "%3E"},
+                {"?", "%3F"},
+                {"@", "%40"},
+                //{"[", "%5B"},
+                {"\\", "%5C"},
+                //{"]", "%5D"},
+                //{"^", "%5E"},
+                //{"_", "%5F"},
+                //{"`", "%60"},
+                //{"{", "%7B"},
+                //{"|", "%7C"},
+                //{"}", "%7D"},
+                //{"~", "%7E"},
+            };
+
+            foreach (var item in utf8Charmap)
+            {
+                UriBuilder uriBuilder = new UriBuilder(urlString);
+
+                uriBuilder.AddQuery("item", "s" + item.Key + "e");
+
+                Assert.IsTrue(
+                    uriBuilder.Uri.ToString() == urlString + "?item=s" + item.Value.ToLower() + "e",
+                    string.Format(
+                        "String compare failed to match '{0}' to '{1}'. Resulting URL is {2}",
+                        item.Key,
+                        item.Value,
+                        uriBuilder.Uri.ToString()));
+                Assert.IsTrue(
+                    uriBuilder.HasQuery("item", "s" + item.Key + "e"),
+                    string.Format(
+                        "HasQuery failed to match '{0}' to '{1}'. Resulting URL is {2}",
+                        item.Key,
+                        item.Value,
+                        uriBuilder.Uri.ToString()));
+            }
         }
     }
 }
