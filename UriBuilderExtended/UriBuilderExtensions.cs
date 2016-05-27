@@ -46,6 +46,7 @@ namespace UriBuilderExtended
             // Check that each given value exists
             foreach (string value in values)
             {
+                // TODO: This may be slow
                 if (!queryValues.GetValues(key).Contains(value))
                 {
                     return false;
@@ -107,7 +108,6 @@ namespace UriBuilderExtended
             {
                 if (queryValues.GetValues(key) == null || !queryValues.GetValues(key).Contains(value))
                 {
-                    // TODO: Write test to see if we need to use HttpUtility.UrlEncode here
                     queryValues.Add(key, value);
                 }
             }
