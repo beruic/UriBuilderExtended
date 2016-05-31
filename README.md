@@ -1,5 +1,5 @@
 # UriBuilderExtended
-Extensions with features missing from .NET's `System.UriBuilder`.
+Extensions to .NET's `System.UriBuilder`.
 
 ## Introduction
 A thing that is missing from .NET's `System.UriBuilder` is a good way to edit the query string. That is what made me look for others solution to this problem, and ultimately made me start this project.
