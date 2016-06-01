@@ -127,8 +127,6 @@ namespace UriBuilderExtended
         /// <returns>A collection of values or an empty list for non-existing keys.</returns>
         public static ICollection<string> GetQueryValues(this UriBuilder uri, string key)
         {
-            // TODO: Untested
-
             HashSet<string> result = new HashSet<string>();
 
             if (!uri.HasQuery(key))
