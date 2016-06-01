@@ -138,6 +138,34 @@ namespace UriBuilderExtended.Test
         }
 
         [TestMethod]
+        public void GetQueryKeys()
+        {
+            string urlString = "http://www.test.com/";
+
+            UriBuilder uriBuilder = new UriBuilder(urlString);
+
+            HashSet<string> inputKeys = new HashSet<string>
+            {
+                "key1",
+                "key2",
+                "key3",
+                "key4",
+                "key5",
+            };
+
+            foreach (string key in inputKeys)
+            {
+                uriBuilder.AddQuery(key, "value");
+            }
+
+            HashSet<string> retrievedKeys = new HashSet<string>(uriBuilder.GetQueryKeys());
+
+            Assert.AreEqual<int>(uriBuilder.GetQueryKeys().Count, inputKeys.Count, "Count does not match input count");
+
+            Assert.IsTrue(inputKeys.SetEquals(retrievedKeys), "Retrieved result does not match set keys");
+        }
+
+        [TestMethod]
         public void GetQueryValues()
         {
             string urlString = "http://www.test.com/";
@@ -160,7 +188,7 @@ namespace UriBuilderExtended.Test
 
             HashSet<string> retrievedValues = new HashSet<string>(uriBuilder.GetQueryValues("key"));
 
-            Assert.AreEqual<int>(uriBuilder.GetQueryValues("key").Count, inputValues.Count, "Count for key does not match input count");
+            Assert.AreEqual<int>(uriBuilder.GetQueryValues("key").Count, inputValues.Count, "Count does not match input count");
 
             Assert.IsTrue(inputValues.SetEquals(retrievedValues), "Retrieved result does not match set values");
 

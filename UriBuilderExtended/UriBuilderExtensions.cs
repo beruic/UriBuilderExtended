@@ -120,11 +120,29 @@ namespace UriBuilderExtended
         }
 
         /// <summary>
-        /// Get all values for the given key.
+        /// Get all keys in the query
+        /// </summary>
+        /// <param name="uri">The <see cref="Uri"/></param>
+        /// <returns>A collection with all keys in the current query</returns>
+        public static ICollection<string> GetQueryKeys(this UriBuilder uri)
+        {
+            HashSet<string> result = new HashSet<string>();
+
+            NameValueCollection queryValues = uri.ParseQuery();
+            foreach (string key in queryValues.AllKeys)
+            {
+                result.Add(key);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Get all values for the given key
         /// </summary>
         /// <param name="uri">The <see cref="Uri"/></param>
         /// <param name="key">The key to look up on</param>
-        /// <returns>A collection of values or an empty list for non-existing keys.</returns>
+        /// <returns>A collection of values or an empty list if the key does not exist</returns>
         public static ICollection<string> GetQueryValues(this UriBuilder uri, string key)
         {
             HashSet<string> result = new HashSet<string>();
@@ -135,7 +153,6 @@ namespace UriBuilderExtended
             }
 
             NameValueCollection queryValues = uri.ParseQuery();
-
             foreach (string value in queryValues.GetValues(key))
             {
                 result.Add(value);
