@@ -10,7 +10,13 @@
     <projectUrl>https://github.com/beruic/UriBuilderExtended</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First stable release. Changed version scheme.</releaseNotes>
+    <releaseNotes>
+      1.2
+      Added GetQueryValues method.
+
+      1.1
+      First stable release. Changed version scheme.
+    </releaseNotes>
     <copyright>Copyright 2016 $author$</copyright>
     <tags>URI URL Uri UriBuilder Extended Extensions</tags>
   </metadata>
