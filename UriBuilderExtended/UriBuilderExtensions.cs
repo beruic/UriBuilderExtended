@@ -20,10 +20,10 @@ namespace UriBuilderExtended
             // Get the collection of query keys and values
             NameValueCollection queryValues = uri.ParseQuery();
 
-            string value = queryValues.Get(key);
+            string values = queryValues.Get(key);
 
             // Clear current values for key
-            return value != null;
+            return values != null;
         }
 
         /// <summary>
@@ -117,6 +117,33 @@ namespace UriBuilderExtended
 
             // Return
             return uri;
+        }
+
+        /// <summary>
+        /// Get all values for the given key.
+        /// </summary>
+        /// <param name="uri">The <see cref="Uri"/></param>
+        /// <param name="key">The key to look up on</param>
+        /// <returns>A collection of values or an empty list for non-existing keys.</returns>
+        public static ICollection<string> GetQueryValues(this UriBuilder uri, string key)
+        {
+            // TODO: Untested
+
+            HashSet<string> result = new HashSet<string>();
+
+            if (!uri.HasQuery(key))
+            {
+                return result;
+            }
+
+            NameValueCollection queryValues = uri.ParseQuery();
+
+            foreach (string value in queryValues.GetValues(key))
+            {
+                result.Add(value);
+            }
+
+            return result;
         }
 
         /// <summary>

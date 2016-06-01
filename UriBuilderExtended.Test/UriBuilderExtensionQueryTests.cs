@@ -138,6 +138,36 @@ namespace UriBuilderExtended.Test
         }
 
         [TestMethod]
+        public void GetQueryValues()
+        {
+            string urlString = "http://www.test.com/";
+
+            UriBuilder uriBuilder = new UriBuilder(urlString);
+
+            HashSet<string> inputValues = new HashSet<string>
+            {
+                "value1",
+                "value2",
+                "value3",
+                "value4",
+                "value5",
+            };
+
+            foreach (string value in inputValues)
+            {
+                uriBuilder.AddQuery("key", value);
+            }
+
+            HashSet<string> retrievedValues = new HashSet<string>(uriBuilder.GetQueryValues("key"));
+
+            Assert.AreEqual<int>(uriBuilder.GetQueryValues("key").Count, inputValues.Count, "Count for key does not match input count");
+
+            Assert.IsTrue(inputValues.SetEquals(retrievedValues), "Retrieved result does not match set values");
+
+            Assert.AreEqual<int>(uriBuilder.GetQueryValues("unknownkey").Count, 0, "Count for unknown key is not 0");
+        }
+
+        [TestMethod]
         public void SpecialCharacterStrings()
         {
             // TODO: Improve
