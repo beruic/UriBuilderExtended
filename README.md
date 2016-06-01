@@ -32,6 +32,9 @@ Sets the query parameter for a given key
 `UriBuilder AddQuery(string key, params string[] values)`
 Adds a query parameter for a given key
 
+`List<string> GetQueryValues(string key)`
+Get all values for the given key
+
 ## Examples
 
 ```C#
@@ -65,10 +68,7 @@ Adds a query parameter for a given key
 
     builder.HasQuery("notMymyKey");
     // false
+
+    builder.GetQueryValues("myKey");
+    // An ICollection containing values "newValue1" and "newValue2"
 ```
-
-## Future plans
-
-I plan on adding the following methods:
-##### `List<string> GetQueryValues(string key)`
-Get all values for the given key
