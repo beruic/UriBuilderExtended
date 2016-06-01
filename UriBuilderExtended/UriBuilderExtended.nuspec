@@ -11,10 +11,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-      1.2
+      1.2.1
+      Added GetQueryKeys method.
+      
+      1.2.0
       Added GetQueryValues method.
-
-      1.1
+      
+      1.1.0
       First stable release. Changed version scheme.
     </releaseNotes>
     <copyright>Copyright 2016 $author$</copyright>
