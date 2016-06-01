@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/beruic/UriBuilderExtended</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First stable release. Changed version scheme.</releaseNotes>
+    <copyright>Copyright 2016 $author$</copyright>
+    <tags>URI URL Uri UriBuilder Extended Extensions</tags>
+  </metadata>
+</package>
