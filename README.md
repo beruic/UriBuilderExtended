@@ -1,6 +1,14 @@
 # UriBuilderExtended
 Extensions to .NET's `System.UriBuilder`.
 
+## Maintainer wanted!
+- Would you like to maintain **UriBuilderExtended**?
+- Alternatively include it in your own library project where it makes sense?
+- Are you from microsoft and wants to put this code into **UriBuilder**?
+
+If you can answer yes to any of these questions, then you are most welcome!
+I have shifted path and do not work with C# and .NET anymore. Therefore I would like to hand over this project to someone who can keep the code alive.
+
 ## Introduction
 A thing that is missing from .NET's `System.UriBuilder` is a good way to edit the query string. That is what made me look for others solution to this problem, and ultimately made me start this project.
 
