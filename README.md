@@ -1,7 +1,7 @@
 # UriBuilderExtended
 Extensions to .NET's `System.UriBuilder`.
 
-## Maintainer wanted!
+## Maintainers wanted!
 - Would you like to maintain **UriBuilderExtended**?
 - Alternatively include it in your own library project where it makes sense?
 - Are you from microsoft and wants to put this code into **UriBuilder**?
